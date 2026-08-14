@@ -1,0 +1,77 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<rect width="1920" height="1080" fill="#071B34"/>
+
+<!-- Left Blue Glow -->
+<radialGradient id="leftGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+gradientTransform="translate(150 450) rotate(90) scale(700)">
+<stop stop-color="#1D4ED8" stop-opacity="0.25"/>
+<stop offset="1" stop-color="#1D4ED8" stop-opacity="0"/>
+</radialGradient>
+
+<rect width="900" height="1080" fill="url(#leftGlow)"/>
+
+<!-- Right Red Glow -->
+<radialGradient id="rightGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+gradientTransform="translate(1820 350) rotate(90) scale(650)">
+<stop stop-color="#EF4444" stop-opacity="0.20"/>
+<stop offset="1" stop-color="#EF4444" stop-opacity="0"/>
+</radialGradient>
+
+<rect x="1020" width="900" height="1080" fill="url(#rightGlow)"/>
+
+<!-- Blueprint Grid -->
+<g opacity="0.10" stroke="#60A5FA">
+
+<path d="M0 100H650"/>
+<path d="M0 200H650"/>
+<path d="M0 300H650"/>
+<path d="M0 400H650"/>
+<path d="M0 500H650"/>
+<path d="M0 600H650"/>
+<path d="M0 700H650"/>
+<path d="M0 800H650"/>
+<path d="M0 900H650"/>
+
+<path d="M80 0V1080"/>
+<path d="M180 0V1080"/>
+<path d="M280 0V1080"/>
+<path d="M380 0V1080"/>
+<path d="M480 0V1080"/>
+<path d="M580 0V1080"/>
+
+</g>
+
+<!-- Blueprint Circles -->
+<g opacity=".18" stroke="#60A5FA" fill="none">
+
+<circle cx="150" cy="220" r="80"/>
+<circle cx="150" cy="220" r="50"/>
+<circle cx="150" cy="220" r="20"/>
+
+<circle cx="380" cy="760" r="120"/>
+<circle cx="380" cy="760" r="70"/>
+
+<circle cx="560" cy="330" r="90"/>
+<circle cx="560" cy="330" r="40"/>
+
+</g>
+
+<!-- Gear Outline -->
+<g opacity=".12" stroke="#EF4444" fill="none">
+
+<circle cx="1680" cy="230" r="70"/>
+<circle cx="1680" cy="230" r="40"/>
+
+<circle cx="1780" cy="420" r="90"/>
+<circle cx="1780" cy="420" r="55"/>
+
+<circle cx="1600" cy="700" r="60"/>
+<circle cx="1600" cy="700" r="35"/>
+
+<circle cx="1760" cy="840" r="120"/>
+<circle cx="1760" cy="840" r="70"/>
+
+</g>
+
+</svg>

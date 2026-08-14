@@ -1,0 +1,21 @@
+.featuredSwiper {
+  padding-bottom: 70px;
+}
+
+.featuredSwiper .swiper-pagination {
+  bottom: 0;
+}
+
+.featuredSwiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.featuredSwiper .swiper-pagination-bullet-active {
+  width: 30px;
+  border-radius: 999px;
+  background: #f97316;
+}

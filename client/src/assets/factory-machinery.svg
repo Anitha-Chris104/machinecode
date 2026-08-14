@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#e7eef2"/>
+      <stop offset=".55" stop-color="#8e9ba5"/>
+      <stop offset="1" stop-color="#263444"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" x2="1">
+      <stop offset="0" stop-color="#C2441C"/>
+      <stop offset="1" stop-color="#AA542B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g stroke="#ffffff" stroke-width="7" opacity=".45">
+    <path d="M0 100h1200M0 230h1200M0 360h1200M0 490h1200"/>
+    <path d="M140 0v760M320 0v760M500 0v760M680 0v760M860 0v760M1040 0v760"/>
+  </g>
+  <g transform="translate(90 110)">
+    <rect x="45" y="390" width="930" height="95" rx="18" fill="#172536"/>
+    <rect x="90" y="100" width="260" height="290" rx="18" fill="#e8edf1"/>
+    <rect x="132" y="146" width="175" height="160" rx="12" fill="#21384f"/>
+    <rect x="420" y="70" width="260" height="320" rx="18" fill="#c9d4dc"/>
+    <rect x="470" y="122" width="160" height="130" rx="12" fill="#31465a"/>
+    <rect x="730" y="150" width="200" height="240" rx="18" fill="#eef2f5"/>
+    <rect x="770" y="205" width="120" height="120" rx="12" fill="#778894"/>
+    <path d="M130 390h770v55H130z" fill="#6f808c"/>
+    <path d="M230 390v-60h565v60" stroke="#21384f" stroke-width="20"/>
+    <rect x="473" y="282" width="155" height="45" rx="8" fill="url(#heat)"/>
+  </g>
+</svg>
