@@ -9,7 +9,7 @@ import Inquiries from "./pages/Admin/Inquiries";
 import AdminProducts from "./pages/Admin/AdminProducts";
 import AddProduct from "./pages/Admin/AddProduct";
 import AdminDashboard from "./pages/Admin/Dashboard";
-import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminLogin from "./pages/Admin/adminLogin";
 import ProtectedAdminRoute from "./components/Admin/ProtectedAdminRoute";
 import EditProduct from "./pages/Admin/EditProduct";
 import AdminEditProduct from "./pages/Admin/AdminEditProduct";
@@ -48,7 +48,6 @@ function App() {
 
                 {/* Admin */}
                 <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
 
                 <Route element={<ProtectedAdminRoute />}>
                   <Route path="/admin" element={<AdminDashboard />} />
@@ -58,7 +57,7 @@ function App() {
                     element={<AdminEditProduct />}
                   />
                 </Route>
-                <Route path="/admin/products" element={<AdminProducts />} />
+
                 <Route path="/admin/products/add" element={<AddProduct />} />
                 <Route path="/admin/inquiries" element={<Inquiries />} />
               </Route>
