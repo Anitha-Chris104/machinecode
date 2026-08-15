@@ -5,7 +5,7 @@ import Loader from "./components/common/Loader";
 import ScrollProgress from "./components/common/ScrollProgress";
 import BackToTop from "./components/common/BackToTop";
 import Layout from "./components/Layout/Layout";
-import Inquiries from "./pages/admin/Inquiries";
+import Inquiries from "./pages/Admin/Inquiries";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AddProduct from "./pages/admin/AddProduct";
 import AdminDashboard from "./pages/Admin/Dashboard";
