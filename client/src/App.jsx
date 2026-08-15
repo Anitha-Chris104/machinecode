@@ -9,7 +9,7 @@ import Inquiries from "./pages/Admin/Inquiries";
 import AdminProducts from "./pages/Admin/AdminProducts";
 import AddProduct from "./pages/Admin/AddProduct";
 import AdminDashboard from "./pages/Admin/Dashboard";
-import AdminLogin from "./pages/Admin/adminLogin";
+import AdminLogin from "./pages/Admin/AdminLogin";
 import ProtectedAdminRoute from "./components/Admin/ProtectedAdminRoute";
 import EditProduct from "./pages/Admin/EditProduct";
 import AdminEditProduct from "./pages/Admin/AdminEditProduct";
