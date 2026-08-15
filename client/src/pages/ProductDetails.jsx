@@ -12,7 +12,7 @@ import Applications from "../components/ProductDetails/Applications";
 import RelatedProducts from "../components/ProductDetails/RelatedProducts";
 import InquirySection from "../components/ProductDetails/InquirySection";
 import StickyInquiryCard from "../components/ProductDetails/StickyInquiryCard";
-import FloatingWhatsapp from "../components/Common/FloatingWhatsapp";
+import FloatingWhatsapp from "../components/common/FloatingWhatsapp";
 import WhyChooseMachine from "../components/ProductDetails/WhyChooseMachine";
 import FAQSection from "../components/ProductDetails/FAQSection";
 import RecommendedIndustries from "../components/ProductDetails/RecommendedIndustries";
