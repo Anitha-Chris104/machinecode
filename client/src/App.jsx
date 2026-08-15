@@ -57,9 +57,6 @@ function App() {
                     element={<AdminEditProduct />}
                   />
                 </Route>
-
-                <Route path="/admin/products/add" element={<AddProduct />} />
-                <Route path="/admin/inquiries" element={<Inquiries />} />
               </Route>
             </Routes>
           </Suspense>
