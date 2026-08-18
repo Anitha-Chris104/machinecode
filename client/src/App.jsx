@@ -13,6 +13,8 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import ProtectedAdminRoute from "./components/Admin/ProtectedAdminRoute";
 import EditProduct from "./pages/Admin/EditProduct";
 import AdminEditProduct from "./pages/Admin/AdminEditProduct";
+import ResetPassword from "./pages/Admin/ResetPassword";
+import ForgotPassword from "./pages/Admin/ForgotPassword";
 
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
@@ -48,6 +50,14 @@ function App() {
 
                 {/* Admin */}
                 <Route path="/admin/login" element={<AdminLogin />} />
+                <Route
+                  path="/admin/forgot-password"
+                  element={<ForgotPassword />}
+                />
+                <Route
+                  path="/admin/reset-password/:token"
+                  element={<ResetPassword />}
+                />
 
                 <Route element={<ProtectedAdminRoute />}>
                   <Route path="/admin" element={<AdminDashboard />} />

@@ -20,10 +20,21 @@ const adminSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+
     role: {
       type: String,
       enum: ["superadmin", "admin", "viewer"],
       default: "admin",
+    },
+
+    resetPasswordToken: {
+      type: String,
+      default: null,
+    },
+
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
     },
   },
   {

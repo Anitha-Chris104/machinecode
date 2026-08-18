@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Lock, Mail, LogIn } from "lucide-react";
 import api from "../../services/api";
 
@@ -115,6 +115,14 @@ const AdminLogin = () => {
                 required
                 className="w-full rounded-xl border border-gray-300 py-3.5 pl-11 pr-4 outline-none transition focus:border-orange-500"
               />
+            </div>
+            <div className="flex justify-end">
+              <Link
+                to="/admin/forgot-password"
+                className="text-sm font-semibold text-orange-500 transition hover:text-orange-600"
+              >
+                Forgot Password?
+              </Link>
             </div>
           </div>
 
