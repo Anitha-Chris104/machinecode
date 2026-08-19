@@ -42,23 +42,31 @@ const stagger = {
 
 function Hero() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHash, setActiveHash] = useState(window.location.hash);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash);
+    };
+
     handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   return (
     <main id="home" className="min-h-screen bg-[#0D244D] text-white">
-      <header
-        className={`fixed inset-x-0 top-0 z-50 border-b transition duration-300 ${
-          isScrolled
-            ? "border-white/10 bg-[#061832]/92 shadow-2xl backdrop-blur-xl"
-            : "border-white/10 bg-transparent"
-        }`}
-      >
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#061832]/95 shadow-2xl backdrop-blur-xl">
         <nav
           className="mx-auto flex h-[74px] max-w-[1480px] items-center justify-between px-5 sm:px-8 xl:px-16"
           aria-label="Primary navigation"
@@ -69,6 +77,7 @@ function Hero() {
             aria-label="Machinecode home"
           >
             <LogoMark />
+
             <span className="text-lg font-black uppercase tracking-[0.08em] text-white sm:text-xl">
               MACHINECODE
             </span>
@@ -80,11 +89,19 @@ function Hero() {
                 <NavLink
                   key={item.name}
                   to={item.path}
-                  className={({ isActive }) =>
-                    `relative py-7 text-sm font-semibold transition hover:text-[#C2441C] ${
-                      isActive ? "text-[#ffb199]" : "text-white"
-                    }`
-                  }
+                  className={({ isActive }) => {
+                    const isHomeActive =
+                      item.path === "/" &&
+                      (activeHash === "" || activeHash === "#home");
+
+                    const active = item.path === "/" ? isHomeActive : isActive;
+
+                    return `relative py-7 text-sm font-semibold transition-colors duration-300 ${
+                      active
+                        ? "text-[#C2441C]"
+                        : "text-white hover:text-[#C2441C]"
+                    }`;
+                  }}
                 >
                   {item.name}
                 </NavLink>
@@ -93,7 +110,11 @@ function Hero() {
                   key={item.name}
                   smooth
                   to={item.path}
-                  className="relative py-7 text-sm font-semibold text-white transition hover:text-[#C2441C]"
+                  className={`relative py-7 text-sm font-semibold transition-colors duration-300 ${
+                    activeHash === item.path.replace("/", "")
+                      ? "text-[#C2441C]"
+                      : "text-white hover:text-[#C2441C]"
+                  }`}
                 >
                   {item.name}
                 </HashLink>
@@ -109,7 +130,6 @@ function Hero() {
           </NavLink>
         </nav>
       </header>
-
       <section className="relative isolate min-h-screen overflow-hidden bg-[#061832] pt-[74px]">
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,36,77,0.98),rgba(13,36,77,0.9)_46%,rgba(133,46,71,0.78)),radial-gradient(circle_at_82%_22%,rgba(194,68,28,0.32),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(0,95,150,0.22),transparent_38%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
