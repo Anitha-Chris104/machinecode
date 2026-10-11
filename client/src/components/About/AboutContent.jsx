@@ -21,20 +21,22 @@ const AboutContent = () => {
         Engineering Excellence <br /> Built on
         <span className="block text-orange-500">Innovation & Precision</span>
       </h2>
-      <div className="mt-8 w-20 h-1 rounded-full bg-orange-500" />
+      <div className="mt-4 w-20 h-1 rounded-full bg-orange-500" />
       <p className="mt-2 text-gray-300 leading-7 text-base max-w-[720px]">
-        We are a leading industrial machinery manufacturer dedicated to
-        delivering high-performance, reliable, and cost-effective solutions for
-        a wide range of industries. With advanced manufacturing technology,
-        skilled engineers, and a customer-first approach, we build machines that
-        drive productivity and growth.
+        Compass Engineering Solutions is a machinery manufacturing and
+        engineering solutions company based in Coimbatore, Tamil Nadu, India. We
+        are a leading industrial machinery manufacturer dedicated to delivering
+        high-performance, reliable, and cost-effective solutions for a wide
+        range of industries. With advanced manufacturing technology, skilled
+        engineers, and a customer-first approach, we build machines that drive
+        productivity and growth.
       </p>
       <p className="mt-2 text-gray-300 leading-7 text-base max-w-[720px]">
         From concept to commissioning, we provide end-to-end solutions including
         design, manufacturing, automation, installation, and after-sales
         support.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-12 max-w-[780px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-10 max-w-[780px]">
         {aboutFeatures.map((feature) => (
           <FeatureCard
             key={feature.id}
@@ -44,7 +46,7 @@ const AboutContent = () => {
           />
         ))}
       </div>
-      <div className="mt-12 flex flex-col sm:flex-row gap-5">
+      <div className="mt-10 flex flex-col sm:flex-row gap-5">
         {/* Primary Button */}
         <button
           className="
