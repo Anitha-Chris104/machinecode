@@ -17,7 +17,8 @@ export const loginAdmin = async (req, res) => {
     }
 
     // Find admin
-    const admin = await Admin.findOne({ email: email.toLowerCase() });
+    const normalizedEmail = email.trim().toLowerCase();
+    const admin = await Admin.findOne({ email: normalizedEmail });
 
     if (!admin) {
       return res.status(401).json({
@@ -196,6 +197,143 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Unable to reset password.",
+    });
+  }
+};
+
+export const updateSuperAdminProfile = async (req, res) => {
+  try {
+    const { name, email, currentPassword } = req.body;
+
+    if (!name?.trim() || !email?.trim() || !currentPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, and current password are required.",
+      });
+    }
+
+    const admin = await Admin.findById(req.admin._id);
+
+    if (!admin || admin.role !== "superadmin") {
+      return res.status(403).json({
+        success: false,
+        message: "Superadmin permission required.",
+      });
+    }
+
+    const passwordMatches = await bcrypt.compare(
+      currentPassword,
+      admin.password,
+    );
+
+    if (!passwordMatches) {
+      return res.status(401).json({
+        success: false,
+        message: "Current password is incorrect.",
+      });
+    }
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const existingAdmin = await Admin.findOne({
+      email: normalizedEmail,
+      _id: { $ne: admin._id },
+    });
+
+    if (existingAdmin) {
+      return res.status(409).json({
+        success: false,
+        message: "That email is already in use.",
+      });
+    }
+
+    admin.name = name.trim();
+    admin.email = normalizedEmail;
+
+    await admin.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Superadmin profile updated successfully.",
+      admin: {
+        id: admin._id,
+        name: admin.name,
+        email: admin.email,
+        role: admin.role,
+      },
+    });
+  } catch (error) {
+    console.error("Update superadmin profile error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to update profile.",
+    });
+  }
+};
+
+export const changeSuperAdminPassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Current and new passwords are required.",
+      });
+    }
+
+    if (newPassword.length < 8) {
+      return res.status(400).json({
+        success: false,
+        message: "New password must be at least 8 characters.",
+      });
+    }
+
+    if (currentPassword === newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Choose a different password.",
+      });
+    }
+
+    const admin = await Admin.findById(req.admin._id);
+
+    if (!admin || admin.role !== "superadmin") {
+      return res.status(403).json({
+        success: false,
+        message: "Superadmin permission required.",
+      });
+    }
+
+    const passwordMatches = await bcrypt.compare(
+      currentPassword,
+      admin.password,
+    );
+
+    if (!passwordMatches) {
+      return res.status(401).json({
+        success: false,
+        message: "Current password is incorrect.",
+      });
+    }
+
+    admin.password = await bcrypt.hash(newPassword, 12);
+    admin.resetPasswordToken = null;
+    admin.resetPasswordExpires = null;
+
+    await admin.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Password changed successfully. Please sign in again.",
+    });
+  } catch (error) {
+    console.error("Change superadmin password error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to change password.",
     });
   }
 };

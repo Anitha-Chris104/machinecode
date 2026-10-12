@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { PhoneCall, Download, MessageCircle, ArrowRight } from "lucide-react";
 
-const PHONE_NUMBER = "+91 9876543210";
+const PHONE_NUMBER = "+91 8825656854210";
 
 const FinalCTA = ({ product }) => {
   const whatsappMessage = encodeURIComponent(
@@ -51,7 +51,7 @@ const FinalCTA = ({ product }) => {
 
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/919876543210?text=${whatsappMessage}`}
+              href={`https://wa.me/918825656854210?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/20"

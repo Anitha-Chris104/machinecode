@@ -4,7 +4,7 @@ export const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    value: "+91 98765 43210",
+    value: "+91 8825656854",
     description: "Mon - Sat | 9:00 AM - 6:00 PM",
     color: "from-[#C2441C] to-[#AA542B]",
   },

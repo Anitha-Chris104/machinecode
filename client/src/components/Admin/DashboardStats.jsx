@@ -9,7 +9,7 @@ import {
   XCircle,
   ArrowRight,
 } from "lucide-react";
-
+import { Link } from "react-router-dom";
 import { getDashboardStats } from "../../services/dashboardService";
 
 const DashboardStats = () => {
@@ -100,16 +100,27 @@ const DashboardStats = () => {
         </h2>
 
         <div className="flex flex-wrap gap-4">
-          <button
-            onClick={() => navigate("/admin/products")}
-            className="flex items-center gap-3 rounded-xl bg-[#0D244D] px-6 py-4 font-semibold text-white shadow-sm transition hover:bg-[#852E47]"
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={() => navigate("/admin/products")}
+              className="flex items-center gap-3 rounded-xl bg-[#0D244D] px-6 py-4 font-semibold text-white shadow-sm transition hover:bg-[#852E47]"
+            >
+              <Package size={20} />
+
+              <span>Manage Products</span>
+
+              <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <Link
+            to="/admin/settings"
+            className="inline-flex items-center gap-3 rounded-xl bg-orange-500 px-6 py-4 font-semibold text-white transition hover:bg-orange-600"
           >
-            <Package size={20} />
-
-            <span>Manage Products</span>
-
-            <ArrowRight size={18} />
-          </button>
+            <span>⚙️</span>
+            Account Settings
+            <span>→</span>
+          </Link>
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import EditProduct from "./pages/Admin/EditProduct";
 import AdminEditProduct from "./pages/Admin/AdminEditProduct";
 import ResetPassword from "./pages/Admin/ResetPassword";
 import ForgotPassword from "./pages/Admin/ForgotPassword";
+import AccountSettings from "./pages/Admin/AccountSettings";
 
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
@@ -40,15 +41,13 @@ function App() {
           <Suspense fallback={<Loader loading={true} />}>
             <Routes>
               <Route element={<Layout />}>
+                {/* Public website */}
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:slug" element={<ProductDetails />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/admin/inquiries" element={<Inquiries />} />
-                <Route path="/admin/products" element={<AdminProducts />} />
-                <Route path="/admin/products/add" element={<AddProduct />} />
 
-                {/* Admin */}
+                {/* Public authentication and password recovery */}
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route
                   path="/admin/forgot-password"
@@ -59,13 +58,17 @@ function App() {
                   element={<ResetPassword />}
                 />
 
+                {/* Protected admin pages */}
                 <Route element={<ProtectedAdminRoute />}>
                   <Route path="/admin" element={<AdminDashboard />} />
-                  <Route path="products/edit/:id" element={<EditProduct />} />
+                  <Route path="/admin/inquiries" element={<Inquiries />} />
+                  <Route path="/admin/products" element={<AdminProducts />} />
+                  <Route path="/admin/products/add" element={<AddProduct />} />
                   <Route
                     path="/admin/products/edit/:id"
                     element={<AdminEditProduct />}
                   />
+                  <Route path="/admin/settings" element={<AccountSettings />} />
                 </Route>
               </Route>
             </Routes>

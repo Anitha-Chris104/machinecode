@@ -3,40 +3,71 @@ import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
 
 // REGISTER ADMIN
+
 export const registerAdmin = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
-    // Check if admin already exists
-    const existingAdmin = await Admin.findOne({ email });
-
-    if (existingAdmin) {
+    if (
+      typeof name !== "string" ||
+      !name.trim() ||
+      typeof email !== "string" ||
+      !email.trim() ||
+      typeof password !== "string" ||
+      password.length < 8
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Admin already exists",
+        message:
+          "Name, email, and a password of at least 8 characters are required.",
       });
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const normalizedEmail = email.trim().toLowerCase();
 
-    // Create admin
-    const admin = await Admin.create({
-      name,
-      email,
-      password: hashedPassword,
-      role: role || "admin",
+    const existingAdmin = await Admin.findOne({
+      email: normalizedEmail,
     });
 
-    res.status(201).json({
+    if (existingAdmin) {
+      return res.status(409).json({
+        success: false,
+        message: "An account with this email already exists.",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    const admin = await Admin.create({
+      name: name.trim(),
+      email: normalizedEmail,
+      password: hashedPassword,
+      role: "admin",
+    });
+
+    return res.status(201).json({
       success: true,
-      message: "Admin registered successfully",
-      admin,
+      message: "Admin registered successfully.",
+      admin: {
+        id: admin._id,
+        name: admin.name,
+        email: admin.email,
+        role: admin.role,
+      },
     });
   } catch (error) {
-    res.status(500).json({
+    if (error.code === 11000) {
+      return res.status(409).json({
+        success: false,
+        message: "An account with this email already exists.",
+      });
+    }
+
+    console.error("Admin registration error:", error);
+
+    return res.status(500).json({
       success: false,
-      message: error.message,
+      message: "Unable to register admin.",
     });
   }
 };

@@ -10,7 +10,7 @@ const officeDetails = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 98765 43210",
+    value: "+91 8825656854 43",
   },
   {
     icon: Mail,
@@ -101,7 +101,7 @@ const ContactMap = () => {
           </a>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+918825656854210"
             className="rounded-xl border border-[#852E47] px-6 py-3 font-medium text-[#852E47] transition hover:bg-[#852E47] hover:text-white"
           >
             Call Now

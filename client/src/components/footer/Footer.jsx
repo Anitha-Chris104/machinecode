@@ -103,12 +103,12 @@ const Footer = () => {
             <div className="mt-6 space-y-5">
               <div className="flex gap-3">
                 <MapPin className="text-[#C2441C]" size={20} />
-                <p className="text-gray-400">Chennai, Tamil Nadu, India</p>
+                <p className="text-gray-400">Coimbatore, Tamil Nadu, India</p>
               </div>
 
               <div className="flex gap-3">
                 <Phone className="text-[#C2441C]" size={20} />
-                <p className="text-gray-400">+91 98765 43210</p>
+                <p className="text-gray-400">+91 8825656854</p>
               </div>
 
               <div className="flex gap-3">

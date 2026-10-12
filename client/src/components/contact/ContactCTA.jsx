@@ -57,11 +57,11 @@ const ContactCTA = () => {
             </Link>
 
             <a
-              href="tel:+919876543210"
+              href="tel:+918825656854210"
               className="inline-flex items-center gap-3 rounded-xl border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-[#0D244D]"
             >
               <PhoneCall size={18} />
-              Call +91 98765 43210
+              Call +91 8825656854
             </a>
           </div>
         </motion.div>

@@ -1,27 +1,35 @@
 import multer from "multer";
+import path from "path";
 
 const storage = multer.memoryStorage();
 
+const allowedTypes = {
+  "image/jpeg": [".jpg", ".jpeg"],
+  "image/png": [".png"],
+  "image/webp": [".webp"],
+  "image/gif": [".gif"],
+  "application/pdf": [".pdf"],
+};
+
 const fileFilter = (req, file, cb) => {
-  // Allow images
-  if (file.mimetype.startsWith("image/")) {
-    return cb(null, true);
+  const allowedExtensions = allowedTypes[file.mimetype];
+  const extension = path.extname(file.originalname).toLowerCase();
+
+  if (!allowedExtensions || !allowedExtensions.includes(extension)) {
+    return cb(
+      new Error("Only JPG, PNG, WEBP, GIF, and PDF files are allowed."),
+    );
   }
 
-  // Allow PDF
-  if (file.mimetype === "application/pdf") {
-    return cb(null, true);
-  }
-
-  // Reject other files
-  cb(new Error("Only images and PDF files are allowed."), false);
+  cb(null, true);
 };
 
 const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 10 * 1024 * 1024, // 10MB
+    fileSize: 10 * 1024 * 1024, // 10 MB per file
+    files: 11, // Up to 10 images + 1 brochure
   },
 });
 

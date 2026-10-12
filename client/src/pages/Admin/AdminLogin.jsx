@@ -137,6 +137,19 @@ const AdminLogin = () => {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+
+        {/* Create Account */}
+        <div className="mt-6 border-t border-gray-200 pt-5 text-center">
+          <p className="text-sm text-gray-500">
+            Don't have an account?{" "}
+            <Link
+              to="/admin/register"
+              className="font-semibold text-orange-500 transition hover:text-orange-600"
+            >
+              Create an Account
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
