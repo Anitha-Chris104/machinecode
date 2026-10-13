@@ -350,6 +350,8 @@ const AddProduct = () => {
                   <option value="Factory Equipment">Factory Equipment</option>
 
                   <option value="Material Handling">Material Handling</option>
+                  <option value="Honey Processing">Honey Processing</option>
+                  <option value="Honey Wax">Honey Wax</option>
                 </select>
               </div>
             </div>

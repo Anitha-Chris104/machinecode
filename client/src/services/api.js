@@ -6,6 +6,7 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+console.log("API Base URL:", api.defaults.baseURL);
 
 // Add JWT automatically to every request
 api.interceptors.request.use(
