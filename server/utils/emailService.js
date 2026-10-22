@@ -1,59 +1,51 @@
 import nodemailer from "nodemailer";
 
 export const sendPasswordResetEmail = async (email, resetUrl) => {
-  const apiKey = process.env.RESEND_API_KEY;
+  const gmailUser = process.env.SMTP_USER;
+  const appPassword = process.env.SMTP_APP_PASSWORD;
 
-  if (!apiKey) {
-    throw new Error("RESEND_API_KEY is missing");
+  if (!gmailUser || !appPassword) {
+    throw new Error("SMTP_USER or SMTP_APP_PASSWORD is missing");
   }
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.resend.com",
-    port: 465,
-    secure: true,
+    service: "gmail",
     auth: {
-      user: "resend",
-      pass: apiKey,
+      user: gmailUser,
+      pass: appPassword,
     },
   });
 
-  await transporter.sendMail({
-    from: "MachineCode Admin <onboarding@resend.dev>",
+  const info = await transporter.sendMail({
+    from: `MachineCode Admin <${gmailUser}>`,
     to: email,
     subject: "MachineCode Admin Password Reset",
+    text: `You requested a password reset for MachineCode Admin.
+
+Open this link to reset your password:
+${resetUrl}
+
+This link expires in 15 minutes. If you did not request this, ignore this email.`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto;">
         <h2>MachineCode Admin Password Reset</h2>
-
         <p>You requested to reset your admin password.</p>
-
-        <p>Click the button below to create a new password:</p>
-
         <p>
-          <a
-            href="${resetUrl}"
-            style="
-              display: inline-block;
-              padding: 12px 20px;
-              background: #852e47;
-              color: white;
-              text-decoration: none;
-              border-radius: 6px;
-            "
-          >
+          <a href="${resetUrl}"
+             style="display:inline-block;padding:12px 20px;background:#852e47;color:white;text-decoration:none;border-radius:6px;">
             Reset Password
           </a>
         </p>
-
-        <p>This link will expire shortly.</p>
-
-        <p>
-          If you did not request this password reset,
-          you can safely ignore this email.
-        </p>
-
+        <p>This link expires in 15 minutes.</p>
+        <p>If you did not request this, you can ignore this email.</p>
         <p>— MachineCode Team</p>
       </div>
     `,
+  });
+
+  console.log("Password reset email accepted by Gmail:", {
+    messageId: info.messageId,
+    accepted: info.accepted,
+    rejected: info.rejected,
   });
 };
