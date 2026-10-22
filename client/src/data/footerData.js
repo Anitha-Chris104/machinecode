@@ -24,20 +24,22 @@ export const footerLinks = {
 
   social: [
     {
+      name: "Facebook",
       icon: FaFacebookF,
-      url: "#",
+      url: "https://www.facebook.com/CompassEngSol",
     },
     {
+      name: "Instagram",
       icon: FaInstagram,
-      url: "#",
+      url: "https://www.instagram.com/compassengineeringsolutions/",
     },
-    {
-      icon: FaLinkedinIn,
-      url: "#",
-    },
-    {
-      icon: FaYoutube,
-      url: "#",
-    },
+    // {
+    //   icon: FaLinkedinIn,
+    //   url: "#",
+    // },
+    // {
+    //   icon: FaYoutube,
+    //   url: "#",
+    // },
   ],
 };

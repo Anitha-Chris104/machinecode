@@ -14,6 +14,7 @@ import {
   MouseIcon,
   ShieldIcon,
 } from "./icons";
+import machineLogo from "../../assets/public/machinelogo.jpeg";
 
 const navItems = [
   { name: "Home", type: "page", path: "/" },
@@ -76,10 +77,14 @@ function Hero() {
             className="flex items-center gap-3"
             aria-label="Machinecode home"
           >
-            <LogoMark />
+            <img
+              src={machineLogo}
+              alt="Machinecode logo"
+              className="h-10 w-10 object-contain"
+            />
 
-            <span className="text-lg font-black uppercase tracking-[0.08em] text-white sm:text-xl">
-              MACHINECODE
+            <span className="text-lg font-black uppercase tracking-[0.08em] text-white sm:text-lg">
+              Compass Engineering
             </span>
           </a>
 

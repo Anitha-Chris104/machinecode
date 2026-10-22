@@ -124,9 +124,9 @@ const Footer = () => {
         <div className="flex flex-wrap items-center justify-center gap-8 border-y border-white/10 py-6 text-sm text-gray-400">
           <span>🏆 ISO 9001 Certified</span>
 
-          <span>⚙️ 15+ Years Experience</span>
+          <span>⚙️ 10+ Years Experience</span>
 
-          <span>🏭 500+ Installations</span>
+          <span>🏭 50+ Installations</span>
 
           <span>🇮🇳 Proudly Made in India</span>
         </div>

@@ -2,7 +2,7 @@ import { GearIcon, ShieldIcon, TruckIcon, UserIcon } from "./icons";
 
 const badges = [
   { label: "ISO Certified", icon: ShieldIcon },
-  { label: "15+ Years Experience", icon: UserIcon },
+  { label: "10+ Years Experience", icon: UserIcon },
   { label: "Custom Engineering", icon: GearIcon },
   { label: "Nationwide Service", icon: TruckIcon },
 ];
@@ -21,7 +21,7 @@ function TrustBadges() {
           <span className="text-xs font-semibold leading-tight text-white sm:max-w-24 sm:text-sm">
             {index === 1 ? (
               <>
-                15+ Years
+                10+ Years
                 <br />
                 Experience
               </>

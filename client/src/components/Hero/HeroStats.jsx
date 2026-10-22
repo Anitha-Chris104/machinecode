@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { CalendarIcon, GroupIcon, MachinesIcon } from "./icons";
 
 const stats = [
-  { value: "15+", label: "Years Experience", icon: CalendarIcon },
-  { value: "500+", label: "Machines Installed", icon: MachinesIcon },
+  { value: "10+", label: "Years Experience", icon: CalendarIcon },
+  { value: "50+", label: "Machines Installed", icon: MachinesIcon },
   { value: "100+", label: "Clients Served", icon: GroupIcon },
 ];
 

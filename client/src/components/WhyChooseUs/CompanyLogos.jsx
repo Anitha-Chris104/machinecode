@@ -2,13 +2,12 @@ import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/motionVariants";
 
 const companies = [
-  "TATA",
-  "ADANI",
-  "JINDAL",
-  "ITC",
-  "GODREJ",
-  "DANONE",
-  "PEPSICO",
+  "Linga groups",
+  "Jayachandran",
+  "Eco farms",
+  "Srilankan exports",
+  "Natures pick",
+  "Myco matrix",
 ];
 
 const CompanyLogos = () => {
@@ -23,10 +22,12 @@ const CompanyLogos = () => {
       <div
         className="
         flex
+         justify-center
+          items-center
         overflow-x-auto
         xl:grid
         xl:grid-cols-7
-        gap-8
+        gap-6
         scrollbar-hide
         "
       >

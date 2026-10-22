@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 
-const companies = ["TATA", "adani", "Jindal Steel", "ITC", "Godrej", "DANONE", "PEPSICO"];
+const companies = [
+  "Linga groups",
+  "Jaya chandran",
+  "Eco farms",
+  "Srilankan exports",
+  "Natures pick",
+  "MYCO MATRIX PRIVATE LIMITED",
+];
 
 function TrustedCompanies() {
   return (
@@ -14,8 +21,8 @@ function TrustedCompanies() {
           <span className="hidden h-px w-24 bg-slate-300 sm:block" />
         </div>
 
-        <div className="-mx-4 mt-7 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
-          <div className="flex min-w-max items-center justify-between gap-10 sm:min-w-0 lg:gap-14">
+        <div className="-mx-8 mt-7 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
+          <div className="flex min-w-max items-center justify-between gap-14 sm:min-w-0 lg:gap-16">
             {companies.map((company, index) => (
               <motion.a
                 href="#contact"
@@ -27,7 +34,7 @@ function TrustedCompanies() {
                 className="group inline-flex min-w-28 items-center justify-center"
                 aria-label={`${company} client logo`}
               >
-                <span className="text-2xl font-black uppercase tracking-tight text-slate-600 opacity-95 transition duration-300 group-hover:text-[#C2441C] group-hover:opacity-100 sm:text-3xl">
+                <span className="text-sm font-black uppercase tracking-tight text-slate-600 opacity-95 transition duration-300 group-hover:text-[#C2441C] group-hover:opacity-100 sm:text-3xl">
                   {company}
                 </span>
               </motion.a>

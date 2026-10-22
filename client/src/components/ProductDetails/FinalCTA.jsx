@@ -74,7 +74,7 @@ const FinalCTA = ({ product }) => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { value: "500+", label: "Machines Installed" },
+              { value: "50+", label: "Machines Installed" },
               { value: "100+", label: "Happy Clients" },
               { value: "24/7", label: "Technical Support" },
               { value: "10+", label: "Years Experience" },

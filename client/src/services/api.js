@@ -12,7 +12,8 @@ console.log("API Base URL:", api.defaults.baseURL);
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("adminToken");
-
+    console.log("Admin token exists:", Boolean(token));
+    console.log("API request:", config.url);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

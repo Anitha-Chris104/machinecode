@@ -7,6 +7,17 @@ import { sendPasswordResetEmail } from "../utils/emailService.js";
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (
+      typeof email !== "string" ||
+      !email.trim() ||
+      typeof password !== "string" ||
+      !password
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and password are required.",
+      });
+    }
 
     // Validate input
     if (!email || !password) {
@@ -19,6 +30,11 @@ export const loginAdmin = async (req, res) => {
     // Find admin
     const normalizedEmail = email.trim().toLowerCase();
     const admin = await Admin.findOne({ email: normalizedEmail });
+    console.log("Admin login diagnostic:", {
+      adminFound: Boolean(admin),
+      passwordHashPresent: Boolean(admin?.password),
+      passwordHashLooksBcrypt: /^\$2[aby]\$\d{2}\$/.test(admin?.password || ""),
+    });
 
     if (!admin) {
       return res.status(401).json({

@@ -55,7 +55,7 @@ const AboutImage = () => {
       <div className="absolute top-8 -left-13 z-20">
         <FloatingCard
           icon={<FaIndustry />}
-          title="15+ Years"
+          title="10+ Years"
           subtitle="Manufacturing Excellence"
           smallpara="Trusted Since 2008"
         />

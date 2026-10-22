@@ -4,14 +4,14 @@ export const stats = [
   {
     id: 1,
     icon: FaAward,
-    number: "15+",
+    number: "10+",
     title: "Years of Excellence",
     description: "Delivering precision industrial solutions since 2010.",
   },
   {
     id: 2,
     icon: FaIndustry,
-    number: "500+",
+    number: "50+",
     title: "Machines Installed",
     description: "Successfully operating across multiple industries.",
   },
