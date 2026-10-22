@@ -6,21 +6,67 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
-console.log("API Base URL:", api.defaults.baseURL);
 
-// Add JWT automatically to every request
+const isDevelopment = import.meta.env.DEV;
+let isRedirectingToLogin = false;
+
+// Attach the admin JWT to requests.
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("adminToken");
-    console.log("Admin token exists:", Boolean(token));
-    console.log("API request:", config.url);
+
     if (token) {
+      config.headers = config.headers || {};
       config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    if (isDevelopment) {
+      console.debug("[API] Request:", config.method?.toUpperCase(), config.url);
     }
 
     return config;
   },
   (error) => Promise.reject(error),
+);
+
+// Log failures and handle expired or invalid admin sessions.
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response?.status;
+    const requestUrl = error.config?.url || "";
+    const isAuthRequest =
+      /\/admin\/(login|register|forgot-password|reset-password)(\/|$)/i.test(
+        requestUrl,
+      );
+
+    if (isDevelopment) {
+      console.error("[API] Request failed:", {
+        method: error.config?.method?.toUpperCase(),
+        endpoint: requestUrl,
+        status: status ?? "Network error",
+        message: error.message,
+      });
+    }
+
+    const hasAdminToken = Boolean(localStorage.getItem("adminToken"));
+
+    if (
+      status === 401 &&
+      hasAdminToken &&
+      !isAuthRequest &&
+      !isRedirectingToLogin
+    ) {
+      isRedirectingToLogin = true;
+      localStorage.removeItem("adminToken");
+
+      if (window.location.pathname !== "/admin/login") {
+        window.location.replace("/admin/login");
+      }
+    }
+
+    return Promise.reject(error);
+  },
 );
 
 export default api;

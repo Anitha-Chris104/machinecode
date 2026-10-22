@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import ProductsHero from "../components/Products/ProductsHero";
 import SearchBar from "../components/Products/SearchBar";
@@ -19,51 +19,74 @@ const Products = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [retryKey, setRetryKey] = useState(0);
 
-  // Fetch products from backend
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
+    setError("");
 
-        const response = await getProducts();
+    try {
+      const response = await getProducts();
 
-        setProducts(response.data);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
+      // Support an array or common API response formats.
+      const productData = Array.isArray(response)
+        ? response
+        : Array.isArray(response?.data)
+          ? response.data
+          : Array.isArray(response?.products)
+            ? response.products
+            : Array.isArray(response?.data?.products)
+              ? response.data.products
+              : null;
 
-        setError("Unable to load products.");
-      } finally {
-        setLoading(false);
+      if (!productData) {
+        console.error("[Products] Unexpected API response format:", response);
+        throw new Error("The server returned an unexpected product format.");
       }
-    };
 
-    fetchProducts();
+      setProducts(productData);
+    } catch (err) {
+      console.error("[Products] Failed to load products:", {
+        status: err.response?.status ?? "Network or server error",
+        message: err.message,
+        endpoint: err.config?.url,
+      });
+
+      setError(
+        err.response?.status === 404
+          ? "The products endpoint was not found. Please try again later."
+          : err.response?.status >= 500
+            ? "The server is temporarily unavailable. Please try again."
+            : "Unable to load products. Check your connection and try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  // Filter products
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts, retryKey]);
+
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
 
-    // Search
     if (searchTerm.trim()) {
       const search = searchTerm.toLowerCase();
 
       filtered = filtered.filter(
         (product) =>
-          product.name.toLowerCase().includes(search) ||
+          product.name?.toLowerCase().includes(search) ||
           product.shortDescription?.toLowerCase().includes(search),
       );
     }
 
-    // Category
     if (selectedCategory !== "All") {
       filtered = filtered.filter(
         (product) => product.category === selectedCategory,
       );
     }
 
-    // Industry
     if (selectedIndustry !== "All Industries") {
       filtered = filtered.filter((product) =>
         product.industries?.some(
@@ -72,13 +95,12 @@ const Products = () => {
       );
     }
 
-    // Sort
     if (sortBy === "az") {
-      filtered.sort((a, b) => a.name.localeCompare(b.name));
+      filtered.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
     }
 
     if (sortBy === "za") {
-      filtered.sort((a, b) => b.name.localeCompare(a.name));
+      filtered.sort((a, b) => (b.name || "").localeCompare(a.name || ""));
     }
 
     return filtered;
@@ -88,7 +110,6 @@ const Products = () => {
     <>
       <Helmet>
         <title>Products | Machine Code</title>
-
         <meta name="description" content="Explore our industrial machines..." />
       </Helmet>
 
@@ -110,34 +131,50 @@ const Products = () => {
             setSortBy={setSortBy}
           />
 
-          {/* Loading */}
           {loading && (
-            <div className="py-20 text-center">
+            <div className="py-20 text-center" role="status">
               <p className="text-lg font-medium text-gray-600">
                 Loading products...
               </p>
             </div>
           )}
 
-          {/* Error */}
           {!loading && error && (
-            <div className="py-20 text-center">
-              <p className="text-red-500">{error}</p>
+            <div className="py-12 text-center" role="alert" aria-live="polite">
+              <p className="mb-4 text-red-600">{error}</p>
+
+              <button
+                type="button"
+                onClick={() => setRetryKey((key) => key + 1)}
+                className="rounded-lg bg-[#852E47] px-5 py-2.5 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#852E47] focus:ring-offset-2"
+              >
+                Try Again
+              </button>
             </div>
           )}
 
-          {/* Products */}
-          {!loading && !error && (
-            <div className="mt-14">
-              <ProductGrid products={filteredProducts} />
+          {!loading && !error && products.length === 0 && (
+            <div className="py-20 text-center">
+              <p className="text-lg text-gray-500">
+                No products are available right now.
+              </p>
             </div>
           )}
 
-          {/* Empty */}
-          {!loading && !error && filteredProducts.length === 0 && (
-            <div className="py-20 text-center">
-              <p className="text-lg text-gray-500">No products found.</p>
-            </div>
+          {!loading && !error && products.length > 0 && (
+            <>
+              <div className="mt-14">
+                <ProductGrid products={filteredProducts} />
+              </div>
+
+              {filteredProducts.length === 0 && (
+                <div className="py-12 text-center">
+                  <p className="text-lg text-gray-500">
+                    No products match your search or filters.
+                  </p>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

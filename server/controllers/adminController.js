@@ -44,7 +44,14 @@ export const loginAdmin = async (req, res) => {
     }
 
     // Check password
+
     const isPasswordCorrect = await bcrypt.compare(password, admin.password);
+
+    console.log("Admin password diagnostic:", {
+      adminFound: true,
+      passwordHashLooksBcrypt: /^\$2[aby]\$\d{2}\$/.test(admin.password || ""),
+      passwordMatches: isPasswordCorrect,
+    });
 
     if (!isPasswordCorrect) {
       return res.status(401).json({
