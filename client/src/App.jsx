@@ -16,6 +16,7 @@ import AdminEditProduct from "./pages/Admin/AdminEditProduct";
 import ResetPassword from "./pages/Admin/ResetPassword";
 import ForgotPassword from "./pages/Admin/ForgotPassword";
 import AccountSettings from "./pages/Admin/AccountSettings";
+import AdminRegister from "./pages/Admin/AdminRegister";
 
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
@@ -61,6 +62,7 @@ function App() {
                 {/* Protected admin pages */}
                 <Route element={<ProtectedAdminRoute />}>
                   <Route path="/admin" element={<AdminDashboard />} />
+                  <Route path="/admin/register" element={<AdminRegister />} />
                   <Route path="/admin/inquiries" element={<Inquiries />} />
                   <Route path="/admin/products" element={<AdminProducts />} />
                   <Route path="/admin/products/add" element={<AddProduct />} />
