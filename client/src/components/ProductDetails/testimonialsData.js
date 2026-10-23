@@ -26,7 +26,7 @@ export const testimonials = [
     name: "Jayachandran",
     position: "Operations Manager",
     company: "Jayachandran",
-    image: client3,
+    image: ava,
     rating: 5,
     review:
       "The machine is easy to operate and maintain. The support team was responsive throughout the process.",
