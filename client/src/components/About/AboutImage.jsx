@@ -60,14 +60,14 @@ const AboutImage = () => {
           smallpara="Trusted Since 2008"
         />
       </div>
-      <div className="absolute -bottom-4 -right-4 z-20">
+      {/* <div className="absolute -bottom-4 -right-4 z-20">
         <FloatingCard
           icon={<HiShieldCheck />}
           title="ISO 9001"
           subtitle="Certified Company"
           smallpara="Quality You Can Rely On"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

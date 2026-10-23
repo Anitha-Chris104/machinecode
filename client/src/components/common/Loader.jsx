@@ -40,8 +40,8 @@ const Loader = ({ loading }) => {
               transition={{ delay: 0.2 }}
               className="mt-8 text-4xl font-bold text-white"
             >
-              Machine
-              <span className="text-[#C2441C]">Code</span>
+              Compass
+              <span className="text-[#C2441C]">Engineering</span>
             </motion.h1>
 
             <motion.p

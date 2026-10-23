@@ -29,7 +29,10 @@ const WhyChooseHeader = () => {
       >
         <h2 className="mt-6 font-black leading-none tracking-tight text-white text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">
           Why Industries Choose
-          <span className="text-orange-700"> Machine code</span>
+          <span className="text-orange-700">
+            {" "}
+            Compass Engineering Solutions
+          </span>
         </h2>
       </motion.div>
 

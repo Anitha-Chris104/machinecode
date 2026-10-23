@@ -1,33 +1,31 @@
-import client1 from "../../assets/testimonials/client1.jpg";
-import client2 from "../../assets/testimonials/client2.jpg";
-import client3 from "../../assets/testimonials/client3.jpg";
+import ava from "../../assets/testimonials/ava.jpg";
 
 export const testimonials = [
   {
     id: 1,
-    name: "Priya sharma",
+    name: "Linga groups",
     position: "Production Manager",
-    company: "ABC Foods Pvt Ltd",
-    image: client1,
+    company: "Linga group of companies",
+    image: ava,
     rating: 5,
     review:
       "The Ribbon Blender has significantly improved our production efficiency. Excellent build quality and reliable after-sales support.",
   },
   {
     id: 2,
-    name: "Mukesh Sharma",
+    name: "Srilankan exports",
     position: "Factory Head",
-    company: "Sun Pharma Industries",
-    image: client2,
+    company: "Srilankan exports",
+    image: ava,
     rating: 5,
     review:
       "Professional installation and outstanding machine performance. Highly recommended for industrial applications.",
   },
   {
     id: 3,
-    name: "Mohammed Ali",
+    name: "Jayachandran",
     position: "Operations Manager",
-    company: "Fresh Foods Ltd",
+    company: "Jayachandran",
     image: client3,
     rating: 5,
     review:

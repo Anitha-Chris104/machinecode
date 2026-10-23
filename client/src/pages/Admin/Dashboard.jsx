@@ -8,7 +8,8 @@ const Dashboard = () => {
       <h1 className="mb-2 text-3xl font-bold text-slate-800">Dashboard</h1>
 
       <p className="mb-8 text-gray-500">
-        Welcome back. Here's an overview of your MachineCode website.
+        Welcome back. Here's an overview of your Compass Engineering Solutions
+        website.
       </p>
 
       <DashboardStats />

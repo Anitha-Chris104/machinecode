@@ -9,11 +9,6 @@ import {
 
 const features = [
   {
-    icon: ShieldCheck,
-    title: "ISO 9001:2015",
-    description: "Certified Company",
-  },
-  {
     icon: Cog,
     title: "Advanced Technology",
     description: "Modern machinery",

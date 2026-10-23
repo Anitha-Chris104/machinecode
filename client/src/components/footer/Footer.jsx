@@ -33,8 +33,8 @@ const Footer = () => {
 
           <div>
             <h2 className="text-3xl font-bold">
-              Machine
-              <span className="text-[#C2441C]">Code</span>
+              Compass
+              <span className="text-[#C2441C]">Engineering</span>
             </h2>
 
             <p className="mt-6 leading-8 text-gray-400">
@@ -122,8 +122,6 @@ const Footer = () => {
         {/* Trust Strip */}
 
         <div className="flex flex-wrap items-center justify-center gap-8 border-y border-white/10 py-6 text-sm text-gray-400">
-          <span>🏆 ISO 9001 Certified</span>
-
           <span>⚙️ 10+ Years Experience</span>
 
           <span>🏭 50+ Installations</span>
@@ -134,7 +132,10 @@ const Footer = () => {
         {/* Bottom */}
 
         <div className="flex flex-col items-center justify-between gap-6 py-8 text-sm text-gray-400 md:flex-row">
-          <p>© {new Date().getFullYear()} Machine Code. All Rights Reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Compass Engineering. All Rights
+            Reserved. Powered By New Update Tech.
+          </p>
 
           <button
             onClick={scrollTop}

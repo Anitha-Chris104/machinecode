@@ -87,7 +87,7 @@ const AdminLogin = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="admin@machinecode.com"
+                placeholder="admin@gmail.com"
                 required
                 className="w-full rounded-xl border border-gray-300 py-3.5 pl-11 pr-4 outline-none transition focus:border-orange-500"
               />

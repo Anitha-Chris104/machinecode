@@ -9,11 +9,6 @@ import {
 
 export const bottomFeatures = [
   {
-    id: 1,
-    icon: FaCertificate,
-    title: "ISO 9001",
-  },
-  {
     id: 2,
     icon: FaCogs,
     title: "Advanced Technology",
