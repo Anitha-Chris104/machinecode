@@ -18,7 +18,7 @@ export const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Office",
-    value: "Chennai, Tamil Nadu",
+    value: "Coimbatore, Tamil Nadu",
     description: "Manufacturing & Corporate Office",
     color: "from-[#0D244D] to-[#852E47]",
   },
