@@ -11,7 +11,7 @@ export const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "info@yourcompany.com",
+    value: "compassenggsolutions1@gmail.com",
     description: "We'll respond within 24 hours",
     color: "from-[#852E47] to-[#C2441C]",
   },

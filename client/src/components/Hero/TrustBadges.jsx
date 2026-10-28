@@ -1,7 +1,6 @@
 import { GearIcon, ShieldIcon, TruckIcon, UserIcon } from "./icons";
 
 const badges = [
-  { label: "ISO Certified", icon: ShieldIcon },
   { label: "10+ Years Experience", icon: UserIcon },
   { label: "Custom Engineering", icon: GearIcon },
   { label: "Nationwide Service", icon: TruckIcon },

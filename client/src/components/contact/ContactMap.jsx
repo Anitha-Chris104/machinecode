@@ -5,7 +5,7 @@ const officeDetails = [
   {
     icon: MapPin,
     title: "Head Office",
-    value: "No. XX, SIDCO Industrial Estate, Chennai, Tamil Nadu - 600001",
+    value: "Coimbatore, Tamil Nadu",
   },
   {
     icon: Phone,
@@ -15,7 +15,7 @@ const officeDetails = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@yourcompany.com",
+    value: "compassenggsolutions1@gmail.com",
   },
   {
     icon: Clock,
